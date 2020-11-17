@@ -6,7 +6,7 @@ The Network Calls are implemented under the folder called Network Layer.
 
 The service manager is injected inside interactor using protocol.
 
-The Extension.swift has all the methods for data massaging and making it render ready. These methods are used inside presenter.
+The Extensions.swift has all the methods for data massaging and making it render ready. These methods are used inside presenter.
 
 The view is made as dumb as possible.
 
