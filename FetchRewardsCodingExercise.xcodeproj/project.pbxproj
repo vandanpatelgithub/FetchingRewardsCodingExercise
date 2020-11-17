@@ -23,6 +23,7 @@
 		2B81FB0625643AF20074C283 /* ItemsListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB0525643AF20074C283 /* ItemsListPresenterTests.swift */; };
 		2B81FB0C25643B120074C283 /* ItemsVCMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB0B25643B120074C283 /* ItemsVCMock.swift */; };
 		2B81FB14256466370074C283 /* ItemExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB13256466370074C283 /* ItemExtensionTests.swift */; };
+		2B81FB1D25647C8F0074C283 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB1C25647C8F0074C283 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		2B81FB0525643AF20074C283 /* ItemsListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListPresenterTests.swift; sourceTree = "<group>"; };
 		2B81FB0B25643B120074C283 /* ItemsVCMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsVCMock.swift; sourceTree = "<group>"; };
 		2B81FB13256466370074C283 /* ItemExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemExtensionTests.swift; sourceTree = "<group>"; };
+		2B81FB1C25647C8F0074C283 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		2B81FACD2563339D0074C283 /* ItemsList */ = {
 			isa = PBXGroup;
 			children = (
+				2B81FB1B25647C7C0074C283 /* Utilities */,
 				2B81FAEA25633C420074C283 /* Builder */,
 				2B81FACE256333AE0074C283 /* View */,
 				2B81FAD0256333C80074C283 /* Interactor */,
@@ -214,6 +217,14 @@
 				2B81FB0B25643B120074C283 /* ItemsVCMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		2B81FB1B25647C7C0074C283 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2B81FB1C25647C8F0074C283 /* Extensions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,6 +361,7 @@
 				2B81FAFC25642D940074C283 /* Endpoint.swift in Sources */,
 				2B81FAEC25633C520074C283 /* ItemsListBuilder.swift in Sources */,
 				2B81FAF125633EF00074C283 /* ItemsListInteractor.swift in Sources */,
+				2B81FB1D25647C8F0074C283 /* Extensions.swift in Sources */,
 				2B81FB0125642F4F0074C283 /* ServiceManager.swift in Sources */,
 				2B81FAF625642CA50074C283 /* Item.swift in Sources */,
 				2B81FA9825632DCC0074C283 /* SceneDelegate.swift in Sources */,
