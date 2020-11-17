@@ -13,14 +13,19 @@ protocol ItemsListInteractable: class {
 
 final class ItemsListInteractor {
     private let presenter: ItemsListPresentable
+    private let serviceManager: ServiceManagale
     
-    init(presenter: ItemsListPresentable) {
+    init(presenter: ItemsListPresentable, serviceManager: ServiceManagale) {
         self.presenter = presenter
+        self.serviceManager = serviceManager
     }
 }
 
 extension ItemsListInteractor: ItemsListInteractable {
     func fetchItems() {
-        print("DEBUG: Fetching Items")
+        serviceManager.fetchItems { [weak self] (result) in
+            guard let self = self else { return }
+            self.presenter.didFetchItems(result)
+        }
     }
 }

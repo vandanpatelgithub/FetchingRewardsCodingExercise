@@ -17,6 +17,12 @@
 		2B81FAE6256336DC0074C283 /* ItemsListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FAE5256336DC0074C283 /* ItemsListPresenter.swift */; };
 		2B81FAEC25633C520074C283 /* ItemsListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FAEB25633C520074C283 /* ItemsListBuilder.swift */; };
 		2B81FAF125633EF00074C283 /* ItemsListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FAF025633EF00074C283 /* ItemsListInteractor.swift */; };
+		2B81FAF625642CA50074C283 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FAF525642CA50074C283 /* Item.swift */; };
+		2B81FAFC25642D940074C283 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FAFB25642D940074C283 /* Endpoint.swift */; };
+		2B81FB0125642F4F0074C283 /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB0025642F4E0074C283 /* ServiceManager.swift */; };
+		2B81FB0625643AF20074C283 /* ItemsListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB0525643AF20074C283 /* ItemsListPresenterTests.swift */; };
+		2B81FB0C25643B120074C283 /* ItemsVCMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB0B25643B120074C283 /* ItemsVCMock.swift */; };
+		2B81FB14256466370074C283 /* ItemExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB13256466370074C283 /* ItemExtensionTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,12 @@
 		2B81FAE5256336DC0074C283 /* ItemsListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListPresenter.swift; sourceTree = "<group>"; };
 		2B81FAEB25633C520074C283 /* ItemsListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListBuilder.swift; sourceTree = "<group>"; };
 		2B81FAF025633EF00074C283 /* ItemsListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListInteractor.swift; sourceTree = "<group>"; };
+		2B81FAF525642CA50074C283 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		2B81FAFB25642D940074C283 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		2B81FB0025642F4E0074C283 /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		2B81FB0525643AF20074C283 /* ItemsListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListPresenterTests.swift; sourceTree = "<group>"; };
+		2B81FB0B25643B120074C283 /* ItemsVCMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsVCMock.swift; sourceTree = "<group>"; };
+		2B81FB13256466370074C283 /* ItemExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemExtensionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +115,7 @@
 		2B81FA9425632DCC0074C283 /* FetchRewardsCodingExercise */ = {
 			isa = PBXGroup;
 			children = (
+				2B81FAFA25642D7D0074C283 /* NetworkLayer */,
 				2B81FACD2563339D0074C283 /* ItemsList */,
 				2B81FA9525632DCC0074C283 /* AppDelegate.swift */,
 				2B81FA9725632DCC0074C283 /* SceneDelegate.swift */,
@@ -116,8 +129,11 @@
 		2B81FAAB25632DCF0074C283 /* FetchRewardsCodingExerciseTests */ = {
 			isa = PBXGroup;
 			children = (
+				2B81FB0A25643AFF0074C283 /* Mocks */,
 				2B81FAAC25632DCF0074C283 /* FetchRewardsCodingExerciseTests.swift */,
 				2B81FAAE25632DCF0074C283 /* Info.plist */,
+				2B81FB0525643AF20074C283 /* ItemsListPresenterTests.swift */,
+				2B81FB13256466370074C283 /* ItemExtensionTests.swift */,
 			);
 			path = FetchRewardsCodingExerciseTests;
 			sourceTree = "<group>";
@@ -170,6 +186,7 @@
 		2B81FAD1256333DA0074C283 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				2B81FAF525642CA50074C283 /* Item.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -180,6 +197,23 @@
 				2B81FAEB25633C520074C283 /* ItemsListBuilder.swift */,
 			);
 			path = Builder;
+			sourceTree = "<group>";
+		};
+		2B81FAFA25642D7D0074C283 /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				2B81FAFB25642D940074C283 /* Endpoint.swift */,
+				2B81FB0025642F4E0074C283 /* ServiceManager.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		2B81FB0A25643AFF0074C283 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2B81FB0B25643B120074C283 /* ItemsVCMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,8 +347,11 @@
 			files = (
 				2B81FA9625632DCC0074C283 /* AppDelegate.swift in Sources */,
 				2B81FAE6256336DC0074C283 /* ItemsListPresenter.swift in Sources */,
+				2B81FAFC25642D940074C283 /* Endpoint.swift in Sources */,
 				2B81FAEC25633C520074C283 /* ItemsListBuilder.swift in Sources */,
 				2B81FAF125633EF00074C283 /* ItemsListInteractor.swift in Sources */,
+				2B81FB0125642F4F0074C283 /* ServiceManager.swift in Sources */,
+				2B81FAF625642CA50074C283 /* Item.swift in Sources */,
 				2B81FA9825632DCC0074C283 /* SceneDelegate.swift in Sources */,
 				2B81FADD256335D00074C283 /* ItemsListVC.swift in Sources */,
 			);
@@ -325,6 +362,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B81FAAD25632DCF0074C283 /* FetchRewardsCodingExerciseTests.swift in Sources */,
+				2B81FB0625643AF20074C283 /* ItemsListPresenterTests.swift in Sources */,
+				2B81FB14256466370074C283 /* ItemExtensionTests.swift in Sources */,
+				2B81FB0C25643B120074C283 /* ItemsVCMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

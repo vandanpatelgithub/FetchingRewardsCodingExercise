@@ -11,7 +11,7 @@ final class ItemsListBuilder {
     static func buildItemsListVC() -> ItemsListVC {
         let vc = ItemsListVC()
         let presenter = ItemsListPresenter(view: vc)
-        let interactor = ItemsListInteractor(presenter: presenter)
+        let interactor = ItemsListInteractor(presenter: presenter, serviceManager: ServiceManager())
         presenter.interactor = interactor
         vc.presenter = presenter
         return vc

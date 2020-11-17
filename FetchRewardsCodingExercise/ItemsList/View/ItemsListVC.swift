@@ -8,13 +8,15 @@
 import UIKit
 
 protocol ItemsListViewable: class {
-    func display()
+    func display(groupedItems: [Dictionary<Int, [Item]>.Element])
+    func display(error: String)
 }
 
 final class ItemsListVC: UIViewController {
     
     // presenter is forced-unwrap on purpose. if it is nil, I have nothing to show on view
     var presenter: ItemsListPresentable!
+    private var groupedItems = [Dictionary<Int, [Item]>.Element]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,14 @@ final class ItemsListVC: UIViewController {
 }
 
 extension ItemsListVC: ItemsListViewable {
-    func display() {
-        print("DEBUG: display...")
+    func display(groupedItems: [Dictionary<Int, [Item]>.Element]) {
+        self.groupedItems = groupedItems
+        
+        for (key, value) in groupedItems {
+            print("Key:: \(key), Value:: \(value)")
+        }
+    }
+    
+    func display(error: String) {
     }
 }
