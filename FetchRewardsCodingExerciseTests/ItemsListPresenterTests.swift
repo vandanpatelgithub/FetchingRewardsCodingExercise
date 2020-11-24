@@ -42,5 +42,10 @@ class ItemsListPresenterTests: XCTestCase {
         XCTAssertEqual(viewMock.numberOfTimesDisplayErrorCalled, 1)
         XCTAssertEqual(viewMock.error, ItemsListError().localizedDescription)
     }
+    
+    func testSearchResults() {
+        presenter.searchResults(forText: "")
+        XCTAssertEqual(viewMock.numberOfTimesDisplayItemsCalled, 1)
+    }
 }
 

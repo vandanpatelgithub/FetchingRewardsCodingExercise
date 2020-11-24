@@ -21,6 +21,7 @@ final class ItemsListVC: UIViewController {
     private let cellReusableID = "itemCell"
     
     private var tableView = UITableView()
+    private var searchBar = UISearchBar()
     
     // MARK: - LifeCycle
 
@@ -37,7 +38,14 @@ final class ItemsListVC: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.title = "List of Items"
         
+        addSearchBar()
         addTableView()
+    }
+    
+    private func addSearchBar() {
+        view.addSubview(searchBar)
+        searchBar.delegate = self
+        setupSearchBarConstraints()
     }
     
     private func addTableView() {
@@ -58,9 +66,18 @@ extension ItemsListVC {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 0).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+    }
+    
+    private func setupSearchBarConstraints() {
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        
+        searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
+        searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        searchBar.heightAnchor.constraint(equalToConstant: 50.0).isActive = true
     }
 }
 
@@ -108,5 +125,13 @@ extension ItemsListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
+    }
+}
+
+// MARK: SearchBar Delegate
+
+extension ItemsListVC: UISearchBarDelegate {    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        presenter.searchResults(forText: searchText)
     }
 }
