@@ -135,7 +135,7 @@ extension ItemsListVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK: SearchBar Delegate
+// MARK: - SearchBar Delegate
 
 extension ItemsListVC: UISearchBarDelegate {    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
