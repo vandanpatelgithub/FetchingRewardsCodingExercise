@@ -19,6 +19,7 @@ final class ItemsListVC: UIViewController {
     var presenter: ItemsListPresentable!
     private var groupedItems = [Dictionary<Int, [Item]>.Element]()
     private let cellReusableID = "itemCell"
+    private let headerReusableID = "itemHeader"
     
     private var tableView = UITableView()
     private var searchBar = UISearchBar()
@@ -53,7 +54,10 @@ final class ItemsListVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReusableID)
+        tableView.separatorStyle = .none
+        
+        tableView.register(ItemCell.self, forCellReuseIdentifier: cellReusableID)
+        tableView.register(ItemHeaderView.self, forHeaderFooterViewReuseIdentifier: headerReusableID)
         
         setupConstraintsForTableView()
     }
@@ -86,9 +90,11 @@ extension ItemsListVC {
 extension ItemsListVC: ItemsListViewable {
     func display(groupedItems: [Dictionary<Int, [Item]>.Element]) {
         self.groupedItems = groupedItems
-        DispatchQueue.main.async { [weak self] in
-            self?.tableView.reloadData()
-        }
+        UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }, completion: nil)
     }
     
     func display(error: String) {
@@ -103,13 +109,14 @@ extension ItemsListVC: UITableViewDelegate, UITableViewDataSource {
         return groupedItems.count
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionTitle = groupedItems[section].key.sectionTitle
-        return sectionTitle
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerReusableID) as! ItemHeaderView
+        view.configureHeader(withTitle: groupedItems[section].key.sectionTitle)
+        return view
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50.0
+        return 65.0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,13 +125,13 @@ extension ItemsListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let name = groupedItems[indexPath.section].value[indexPath.row].name ?? ""
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReusableID, for: indexPath)
-        cell.textLabel?.text = name
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReusableID, for: indexPath) as! ItemCell
+        cell.configureCell(withTitle: name)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50.0
+        return 60.0
     }
 }
 
