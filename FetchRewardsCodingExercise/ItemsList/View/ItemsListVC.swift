@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ItemsListViewable: class {
-    func display(groupedItems: [Dictionary<Int, [Item]>.Element])
+    func display(groupedItems: [Int: [Item]])
     func display(error: String)
 }
 
@@ -88,6 +88,9 @@ extension ItemsListVC {
 // MARK: - VIPER Protocol Conformance
 
 extension ItemsListVC: ItemsListViewable {
+    // Dummy Protocol Implementation to pass compiler check
+    func display(groupedItems: [Int : [Item]]) { }
+    
     func display(groupedItems: [Dictionary<Int, [Item]>.Element]) {
         self.groupedItems = groupedItems
         UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: { [weak self] in

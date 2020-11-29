@@ -16,4 +16,13 @@ final class ItemsListBuilder {
         vc.presenter = presenter
         return vc
     }
+    
+    static func buildItemsListDiffableVC() -> ItemsListDiffableVC {
+        let vc = ItemsListDiffableVC()
+        let presenter = ItemsListPresenter(view: vc)
+        let interactor = ItemsListInteractor(presenter: presenter, serviceManager: ServiceManager())
+        presenter.interactor = interactor
+        vc.presenter = presenter
+        return vc
+    }
 }

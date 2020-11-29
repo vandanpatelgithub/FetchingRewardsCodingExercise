@@ -26,6 +26,7 @@
 		2B81FB1D25647C8F0074C283 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB1C25647C8F0074C283 /* Extensions.swift */; };
 		2B81FB25256F2AC50074C283 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB24256F2AC40074C283 /* ItemCell.swift */; };
 		2B81FB2A256F601C0074C283 /* ItemHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B81FB29256F601C0074C283 /* ItemHeaderView.swift */; };
+		2BFDDF42257028BE00DC0706 /* ItemsListDiffableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFDDF41257028BE00DC0706 /* ItemsListDiffableVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		2B81FB1C25647C8F0074C283 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2B81FB24256F2AC40074C283 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		2B81FB29256F601C0074C283 /* ItemHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHeaderView.swift; sourceTree = "<group>"; };
+		2BFDDF41257028BE00DC0706 /* ItemsListDiffableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListDiffableVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				2B81FADB256335D00074C283 /* ItemsListVC.swift */,
 				2B81FB24256F2AC40074C283 /* ItemCell.swift */,
 				2B81FB29256F601C0074C283 /* ItemHeaderView.swift */,
+				2BFDDF41257028BE00DC0706 /* ItemsListDiffableVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				2B81FAFC25642D940074C283 /* Endpoint.swift in Sources */,
 				2B81FB25256F2AC50074C283 /* ItemCell.swift in Sources */,
 				2B81FAEC25633C520074C283 /* ItemsListBuilder.swift in Sources */,
+				2BFDDF42257028BE00DC0706 /* ItemsListDiffableVC.swift in Sources */,
 				2B81FAF125633EF00074C283 /* ItemsListInteractor.swift in Sources */,
 				2B81FB1D25647C8F0074C283 /* Extensions.swift in Sources */,
 				2B81FB0125642F4F0074C283 /* ServiceManager.swift in Sources */,
