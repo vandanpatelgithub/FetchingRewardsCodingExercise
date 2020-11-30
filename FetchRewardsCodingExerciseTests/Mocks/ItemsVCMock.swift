@@ -11,10 +11,10 @@ import Foundation
 class ItemsVCMock: ItemsListViewable {
     var numberOfTimesDisplayItemsCalled = 0
     var numberOfTimesDisplayErrorCalled = 0
-    var groupedItems = [Dictionary<Int, [Item]>.Element]()
+    var groupedItems = [Int : [Item]]()
     var error = ""
-    
-    func display(groupedItems: [Dictionary<Int, [Item]>.Element]) {
+        
+    func display(groupedItems: [Int : [Item]]) {
         numberOfTimesDisplayItemsCalled += 1
         self.groupedItems = groupedItems
     }

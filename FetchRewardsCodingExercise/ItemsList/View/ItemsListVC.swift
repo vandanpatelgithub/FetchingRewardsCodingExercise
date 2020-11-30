@@ -17,7 +17,7 @@ final class ItemsListVC: UIViewController {
     // MARK: - Properties
     // presenter is forced-unwrap on purpose. if it is nil, I have nothing to show on view
     var presenter: ItemsListPresentable!
-    private var groupedItems = [Dictionary<Int, [Item]>.Element]()
+    private var groupedItems = [[Int: [Item]]]()
     private let cellReusableID = "itemCell"
     private let headerReusableID = "itemHeader"
     
@@ -25,7 +25,7 @@ final class ItemsListVC: UIViewController {
     private var searchBar = UISearchBar()
     
     // MARK: - LifeCycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.didLoadView()
@@ -89,15 +89,18 @@ extension ItemsListVC {
 
 extension ItemsListVC: ItemsListViewable {
     // Dummy Protocol Implementation to pass compiler check
-    func display(groupedItems: [Int : [Item]]) { }
-    
-    func display(groupedItems: [Dictionary<Int, [Item]>.Element]) {
-        self.groupedItems = groupedItems
-        UIView.transition(with: tableView, duration: 0.3, options: .transitionCrossDissolve, animations: { [weak self] in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-        }, completion: nil)
+    func display(groupedItems: [Int : [Item]]) {
+        self.groupedItems.removeAll()
+        for (key, value) in groupedItems.sorted(by: { $0.key < $1.key}) {
+            self.groupedItems.append([key: value])
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            UIView.transition(with: self.tableView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.tableView.reloadData()
+            }, completion: nil)
+        }
     }
     
     func display(error: String) {
@@ -109,12 +112,12 @@ extension ItemsListVC: ItemsListViewable {
 
 extension ItemsListVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return groupedItems.count
+        return self.groupedItems.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerReusableID) as! ItemHeaderView
-        view.configureHeader(withTitle: groupedItems[section].key.sectionTitle)
+        view.configureHeader(withTitle: groupedItems[section].keys.first?.sectionTitle ?? "")
         return view
     }
     
@@ -123,11 +126,12 @@ extension ItemsListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groupedItems[section].value.count
+        return groupedItems[section].first?.value.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let name = groupedItems[indexPath.section].value[indexPath.row].name ?? ""
+        let dict = self.groupedItems[indexPath.section]
+        let name = dict.first?.value[indexPath.row].name ?? ""
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReusableID, for: indexPath) as! ItemCell
         cell.configureCell(withTitle: name)
         return cell
