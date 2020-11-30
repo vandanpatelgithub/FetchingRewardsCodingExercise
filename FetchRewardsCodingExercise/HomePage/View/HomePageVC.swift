@@ -13,23 +13,15 @@ final class HomePageVC: UIViewController, HomePageViewable {
     
     // MARK: - Properties
     
-    private var traditionalDataSource: UIButton = {
-        let button = UIButton(type: .system)
+    private var traditionalDataSource: CustomButton = {
+        let button = CustomButton(title: "Traditional DataSource 👉🏻")
         button.addTarget(self, action: #selector(didTapTraditionalDataSource), for: .touchUpInside)
-        button.setTitle("Traditional DataSource 👉🏻", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.backgroundColor = UIColor(white: 0.9, alpha: 0.9)
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return button
     }()
     
-    private var diffableDataSource: UIButton = {
-        let button = UIButton(type: .system)
+    private var diffableDataSource: CustomButton = {
+        let button = CustomButton(title: "Diffable DataSource 👉🏻")
         button.addTarget(self, action: #selector(didTapDiffableDataSource), for: .touchUpInside)
-        button.setTitle("Diffable DataSource 👉🏻", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.backgroundColor = UIColor(white: 0.9, alpha: 0.9)
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         return button
     }()
     
@@ -66,11 +58,21 @@ final class HomePageVC: UIViewController, HomePageViewable {
     
     // MARK: - Selectors
     @objc private func didTapTraditionalDataSource() {
-        presenter.goToTraditionalDataSource()
+        UIView.animate(withDuration: 0.1) {
+            self.traditionalDataSource.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        } completion: { _ in
+            self.traditionalDataSource.transform = .identity
+            self.presenter.goToTraditionalDataSource()
+        }
     }
     
     @objc private func didTapDiffableDataSource() {
-        presenter.goToDiffableDataSource()
+        UIView.animate(withDuration: 0.1) {
+            self.diffableDataSource.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        } completion: { _ in
+            self.diffableDataSource.transform = .identity
+            self.presenter.goToDiffableDataSource()
+        }
     }
     
     // MARK: - Setup Constraints
@@ -79,7 +81,7 @@ final class HomePageVC: UIViewController, HomePageViewable {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
     }
 }
